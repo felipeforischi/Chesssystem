@@ -44,7 +44,7 @@ public class UI {
 			int row = Integer.parseInt(s.substring(1));
 			return new ChessPosition(column, row);
 		} catch (RuntimeException e) {
-			throw new InputMismatchException("Esta posição não existe no tabuleiro, digite ente a1 e g7");
+			throw new InputMismatchException("Esta posicao nao existe no tabuleiro, digite entre a1 e h8");
 		}
 
 	}

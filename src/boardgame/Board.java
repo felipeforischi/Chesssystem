@@ -21,9 +21,11 @@ public class Board {
 		return rows;
 	}
 
+
 	public int getColumns() {
 		return columns;
 	}
+	
 
 	public Piece piece (int row, int column) {
 		if (!positionExists(row, column)) {
@@ -44,7 +46,7 @@ public class Board {
 	
 	public void placePiece (Piece piece, Position position) {
 		if(thereIsAPiece(position)) {
-			throw new BoardException("Já existe uma peça nessa posição (" + position +")");
+			throw new BoardException("Já existe uma peça nessa posição" + position);
 		}
 		
 		pieces[position.getRow()][position.getColumn()] = piece;

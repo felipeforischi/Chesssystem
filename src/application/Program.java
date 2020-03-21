@@ -13,8 +13,8 @@ import chess.ChessPosition;
 public class Program {
 
 	public static void main(String[] args) {
-		
-		Scanner sc = new Scanner (System.in);
+
+		Scanner sc = new Scanner(System.in);
 		ChessMatch chessMatch = new ChessMatch();
 		List<ChessPiece> captured = new ArrayList<>();
 
@@ -25,28 +25,26 @@ public class Program {
 				System.out.println();
 				System.out.print("Escolha a peca: ");
 				ChessPosition source = UI.readChessPosition(sc);
-				boolean [][] possibleMoves = chessMatch.possibleMoves(source);
+			
+				boolean[][] possibleMoves = chessMatch.possibleMoves(source);
 				UI.clearScreen();
 				UI.printBoard(chessMatch.getPieces(), possibleMoves);
 				System.out.println();
 				System.out.print("Escolha Destino: ");
 				ChessPosition target = UI.readChessPosition(sc);
-				
+
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
-				
-				if (captured != null) {
+
+				if (capturedPiece != null) {
 					captured.add(capturedPiece);
 				}
-			}
-			catch (ChessException e ) {
-				System.out.println(e.getLocalizedMessage());
+			} catch (ChessException e) {
+				System.out.println(e.getMessage());
 				sc.nextLine();
-			}
-			catch (InputMismatchException e) {
-				System.out.println(e.getLocalizedMessage());
+			} catch (InputMismatchException e) {
+				System.out.println(e.getMessage());
 				sc.nextLine();
 			}
 		}
 	}
-
 }

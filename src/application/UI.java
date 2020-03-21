@@ -47,7 +47,8 @@ public class UI {
 			char column = s.charAt(0);
 			int row = Integer.parseInt(s.substring(1));
 			return new ChessPosition(column, row);
-		} catch (RuntimeException e) {
+		} 
+		catch (RuntimeException e) {
 			throw new InputMismatchException("Esta posicao nao existe no tabuleiro, digite entre a1 e h8");
 		}
 	}
@@ -58,9 +59,16 @@ public class UI {
 		printCapturedPieces(captured);
 		System.out.println();
 		System.out.println("Rodada :" + chessMatch.getTurn());
-		System.out.println("Esperando jogador:" + chessMatch.getCurrentPlayer());
-		if (chessMatch.getCheck()) {
-			System.out.println("CHECK!");
+	
+		if(!chessMatch.getCheckMate()) {
+			System.out.println("Esperando jogador:" + chessMatch.getCurrentPlayer());
+			if (chessMatch.getCheck()) {
+				System.out.println("CHECK!");
+			}
+		}
+		else {
+			System.out.println("CHECK MATE !!!");
+			System.out.println("Vencedor: " + chessMatch.getCurrentPlayer());
 		}
 	}
 	
